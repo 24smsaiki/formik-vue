@@ -27,7 +27,7 @@ const handleSubmit = (e) => {
     } else {
         errors.value = formErrors;
     }
-    console.log(formValues);
+
 }
 
 const isSubmitting = ref(false);

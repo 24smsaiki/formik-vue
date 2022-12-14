@@ -4,13 +4,10 @@ import Formik from './components/Formik.vue';
 import Field from './components/Field.vue';
 
 const onSubmit = (values) => {
-    console.log(values);
   
     for (let key in values) {
         if (values.hasOwnProperty(key)) {
-            console.log(key + " -> " + values[key]);
             values[key] = '';
-        
           }
     }
 };
@@ -56,7 +53,7 @@ const initialValue = reactive({
               v-model:value="values.name"
               />
               <Field
-                as="textarea"
+                as="input"
                 name="email"
                 placeholder="email"
               />
