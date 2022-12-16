@@ -23,11 +23,10 @@ const handleSubmit = (e) => {
     const formValues = values.value;
     const formErrors = props.validate(formValues);
     if (Object.keys(formErrors).length === 0) {
-        props.onSubmit(formValues);
+        props.onSubmit(values);
     } else {
         errors.value = formErrors;
     }
-
 }
 
 const isSubmitting = ref(false);

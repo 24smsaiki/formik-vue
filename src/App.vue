@@ -3,13 +3,9 @@ import { ref, reactive, provide } from 'vue'
 import Formik from './components/Formik.vue';
 import Field from './components/Field.vue';
 
-const onSubmit = (values) => {
-  
-    for (let key in values) {
-        if (values.hasOwnProperty(key)) {
-            values[key] = '';
-          }
-    }
+const onSubmit = (val) => {
+    result.value = val.value;
+
 };
 
 const validate = (values) => {
@@ -30,10 +26,10 @@ const validate = (values) => {
 const initialValue = reactive({
     name: '',
     email: '',
-    select: [
-       "toto", "tata", "titi"
-    ],
+    description: '',
 });
+
+const result = reactive({});
 
 </script>
 
@@ -50,7 +46,7 @@ const initialValue = reactive({
             <Field
               as="input"
               name="name"
-              v-model:value="values.name"
+              placeholder="name"
               />
               <Field
                 as="input"
@@ -58,14 +54,11 @@ const initialValue = reactive({
                 placeholder="email"
               />
 
-            <Field
-              as="select"
-              name="select"
-            >
-              <option v-for="option in values.select" :value="option" :key="option">
-                {{ option }}
-              </option>
-            </Field>
+              <Field
+                as="textarea"
+                name="description"
+                placeholder="description"
+              />
 
             
             <button type="submit" :disabled="isSubmitting">Submit</button>
@@ -73,6 +66,11 @@ const initialValue = reactive({
           <div v-if="errors" >
             <div v-for="(error, key) in errors" :key="key">
               {{ error }}
+            </div>
+          </div>
+          <div v-if="result">
+            <div v-for="(value, key) in result" :key="key">
+              {{ value }}
             </div>
           </div>
           </form>

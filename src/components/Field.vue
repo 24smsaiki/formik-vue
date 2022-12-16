@@ -21,7 +21,7 @@ const values = inject('values');
 
 
 <template>
-    <keep-alive>
+    <!-- <keep-alive> -->
         <component :is="as" v-if="(typeof props.as === 'string')" @input="values[props.name] = $event.target.value">
             
             <slot></slot>
@@ -29,5 +29,5 @@ const values = inject('values');
         <component :is="as" v-else v-model="values[props.name]">
             <slot></slot>
         </component>
-    </keep-alive>
+    <!-- </keep-alive> -->
 </template>
